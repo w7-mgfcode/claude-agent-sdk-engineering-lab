@@ -1,67 +1,87 @@
 # Session Handoff
 
-> **Date:** 2026-09-01
-> **Session focus:** Maintainer identity integration, canonical agent docs alignment, next-move roadmap planning, GitHub repository creation with branch protection, and issue publishing.
-> **Status:** completed
+> **Date:** 2026-09-01  
+> **Repository:** `claude-agent-sdk-engineering-lab`  
+> **Maintainer:** Gabor Szabo `<gabor@stp72.com>`  
+> **Status:** Ready for Movement 02 (`feat/2-sse-streaming`)  
+> **CI / Quality Gate:** 100% Green (`make verify` passes Ruff, Mypy Strict, Pytest)
 
-## What Was Done
+---
 
+## 1. Executive Summary
+
+This repository is fully configured, audited, and published on GitHub as an evidence-first benchmark for production-grade **Claude Agent SDK (Python)** architectures.
+
+- **Remote URL:** [https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab)
+- **Branch Protection:** Active on `main` requiring linear history, strict `verify` CI status check passing, and blocking force pushes/deletions.
+- **Maintainer Identity:** Unified across git config, commit history, [pyproject.toml](pyproject.toml), and [AGENTS.md](AGENTS.md).
+- **Issue Tracking:** 5 strategic Continuous Development Movements published as GitHub Issues ([#1](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues/1) through [#5](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues/5)).
+
+---
+
+## 2. What Was Accomplished
+
+### Canonical Agent Documentation & Tool Alignment
 - Audited and updated canonical [AGENTS.md](AGENTS.md) with complete repo-verified setup, build, test, and verification commands, code conventions, architecture notes, and safety boundaries within managed region markers (`<!-- BEGIN maintaining-agent-docs (generated) -->`).
-- Converted [CLAUDE.md](CLAUDE.md) to an `@AGENTS.md` thin shim and created [GEMINI.md](GEMINI.md) thin shim, eliminating duplication drift.
+- Converted [CLAUDE.md](CLAUDE.md) and [GEMINI.md](GEMINI.md) into thin `@AGENTS.md` shims to eliminate policy drift across diverse AI developer tooling.
 - Enhanced [README.md](README.md) with Shields.io status badges (CI, Python 3.11+, Claude Agent SDK 0.2.134, FastAPI, Mypy Strict, Ruff, MIT License) and linked `AGENTS.md`.
+
+### Strategic Roadmap & Issue Publishing
 - Authored the **5 Continuous Development Movements** in [docs/.next-move/](docs/.next-move/) ([README.md](docs/.next-move/README.md), `01_live_sdk_calibration.md` through `05_continuous_quality_drift.md`).
 - Added standardized GitHub issue templates in [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/) (`movement.md`, `bug_report.md`, `feature_request.md`).
-- Configured maintainer identity (`Gabor Szabo <gabor@stp72.com>`) in git config, rewritten commit history, [pyproject.toml](pyproject.toml), and [AGENTS.md](AGENTS.md).
-- Created public remote repository [w7-mgfcode/claude-agent-sdk-engineering-lab](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab) and pushed `main`.
-- Configured repository topics (`claude-agent-sdk`, `anthropic`, `python`, `fastapi`, `mcp`, `asyncio`, `ai-engineering`, `llm-agents`, `pydantic`).
-- Configured GitHub branch protection on `main` requiring strict `verify` CI status checks and linear history, while blocking force pushes and deletions.
-- Created custom GitHub labels (`movement`, `evidence`, `async-architecture`, `resilience`, `observability`, `automation`) and published all 5 Movement Issues (#1 to #5).
+- Configured custom GitHub labels (`movement`, `evidence`, `async-architecture`, `resilience`, `observability`, `automation`) and published all 5 Movement Issues.
 
-### Files Changed / Added
+### Ecosystem & Branch Strategy
+- Established strict branch naming conventions (`feat/<issue-id>-<slug>` and `agent/<agent-id>/<task-slug>`).
+- Cross-compatible with `Mannostree` parallel development CLI for isolated worktree workflows.
 
+---
+
+## 3. Movement Matrix & Status
+
+| # | Movement | Focus Area | Issue | Status | Target Deliverables |
+| :-: | :--- | :--- | :-: | :-: | :--- |
+| **01** | [**Live SDK Calibration**](docs/.next-move/01_live_sdk_calibration.md) | Grounded Proof | [#1](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues/1) | **Spec Ready** (Pending live API key run) | `docs/EVIDENCE.md`<br>`docs/DEMO_SCRIPT.md`<br>`docs/TROUBLESHOOTING.md` |
+| **02** | [**SSE Streaming & Cancellation**](docs/.next-move/02_sse_streaming_cancellation.md) | Async Architecture | [#2](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues/2) | **Next Active** | `src/claude_agent_lab/api.py`<br>`src/claude_agent_lab/sdk_adapter.py`<br>`tests/integration/test_api_fake_sdk.py` |
+| **03** | [**Resilience & Fault-Injection**](docs/.next-move/03_resilience_fault_injection.md) | Edge-Case Robustness | [#3](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues/3) | **Planned** | `tests/unit/test_resilience.py`<br>`src/claude_agent_lab/errors.py` |
+| **04** | [**Telemetry & Cost Accounting**](docs/.next-move/04_telemetry_cost_ledger.md) | Observability | [#4](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues/4) | **Planned** | `src/claude_agent_lab/logging_utils.py`<br>`src/claude_agent_lab/config.py` |
+| **05** | [**Quality & Drift Defense**](docs/.next-move/05_continuous_quality_drift.md) | Automation | [#5](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues/5) | **Planned** | `.pre-commit-config.yaml`<br>`.github/workflows/sdk-drift.yml` |
+
+---
+
+## 4. Key Architectural Decisions
+
+1. **Canonical Single Source of Truth in AGENTS.md**: Eliminates duplication and conflicting instructions across multi-agent environments.
+2. **Author Identity Alignment (`Gabor Szabo <gabor@stp72.com>`)**: Clean commit attribution matching public GitHub maintainer profile.
+3. **Linear History & Protected `main`**: Ensures reproducible, bisectable git history and enforces passing green CI gates before any merge.
+4. **Mocked/Offline Test Harness as Primary Gate**: Guarantees fast, deterministic CI execution without requiring external API token dependencies or incurring API costs during PR validation.
+
+---
+
+## 5. Immediate Next Steps (Movement 02 Kickoff)
+
+1. **Create Feature Branch**:
+   ```bash
+   git checkout -b feat/2-sse-streaming
+   ```
+2. **Data Models (`src/claude_agent_lab/api_models.py`)**:
+   - Add `ChatCompletionChunk` model supporting OpenAI-compatible SSE chunk envelopes (`data: {"choices": [{"delta": {"content": "..."}}]}`).
+3. **Async Streaming Generator (`src/claude_agent_lab/sdk_adapter.py`)**:
+   - Implement `stream_complete(req: ChatCompletionRequest) -> AsyncGenerator[str, None]` yielding partial token events and handling `asyncio.CancelledError`.
+4. **FastAPI Endpoint Update (`src/claude_agent_lab/api.py`)**:
+   - Update `/v1/chat/completions` to return `StreamingResponse(..., media_type="text/event-stream")` when `stream=True`.
+5. **Testing & Validation**:
+   - Add streaming chunk validation and client disconnect cancellation tests in `tests/integration/test_api_fake_sdk.py`.
+   - Run quality gate: `make verify`.
+
+---
+
+## 6. Verification Commands
+
+```bash
+# Verify entire quality suite (Ruff, Mypy Strict, Pytest)
+make verify
+
+# Verify agent docs compliance
+python3 .agents/skills/maintaining-agent-docs/scripts/validate.py . --strict
 ```
-AGENTS.md
-CLAUDE.md
-GEMINI.md
-README.md
-pyproject.toml
-.github/ISSUE_TEMPLATE/bug_report.md
-.github/ISSUE_TEMPLATE/feature_request.md
-.github/ISSUE_TEMPLATE/movement.md
-docs/.next-move/README.md
-docs/.next-move/01_live_sdk_calibration.md
-docs/.next-move/02_sse_streaming_cancellation.md
-docs/.next-move/03_resilience_fault_injection.md
-docs/.next-move/04_telemetry_cost_ledger.md
-docs/.next-move/05_continuous_quality_drift.md
-```
-
-## Decisions Made
-
-- **Canonical Single Source of Truth in AGENTS.md** — because having policies in both `CLAUDE.md` and `AGENTS.md` causes duplication drift across multi-agent tools.
-- **Re-authoring git history to Gabor Szabo <gabor@stp72.com>** — because public portfolio commits must accurately reflect the maintainer's GitHub identity and authorship.
-- **Enforcing strict status checks and linear history on `main` via branch protection** — because autonomous agent workflows require predictable, green CI quality gates and bisectable git history.
-- **Adopting `agent/<agent-id>/<task-slug>` and `feat/<issue-id>-<slug>` branch naming pattern** — because it prevents namespace collisions between multiple agents/developers and cleanly links branches to GitHub issues.
-- **Decomposing continuous development into 5 modular movement documents in `docs/.next-move/`** — because breaking complex engineering work into testable, evidence-backed increments keeps PR diffs inspectable.
-
-## Dead Ends
-
-- **Tried:** Configuring GitHub ruleset branch name regex via REST API JSON payload → **Failed because:** GitHub REST ruleset parameter format threw validation errors on branch regex options; instead, codified and documented branch naming conventions in `AGENTS.md` and enforced `main` branch protection via the standard branch protection API.
-
-## Open Questions
-
-- [ ] Execute live Claude Agent SDK calls locally (`RUN_LIVE_CLAUDE_TESTS=1`) once live credentials/network access are active to close out Movement 01 (Issue #1).
-- [ ] Decide whether Movement 02 (FastAPI SSE streaming with async disconnect cancellation) should be developed next on a new branch `feat/2-sse-streaming`.
-
-## Next Steps
-
-1. **Immediate:** Create and checkout branch `feat/2-sse-streaming` and update `src/claude_agent_lab/api_models.py` to add `ChatCompletionChunk` models for SSE streaming (Issue #2).
-2. Implement `stream_complete()` async generator in `src/claude_agent_lab/sdk_adapter.py` and mount `StreamingResponse` in `src/claude_agent_lab/api.py`.
-3. Add streaming chunk and disconnect cancellation tests to `tests/integration/test_api_fake_sdk.py` and verify with `make verify`.
-
-## Context for Next Session
-
-- **Branch Status:** `main` is clean, up to date with `origin/main`, and protected against direct pushes/force pushes.
-- **Quality Gate:** `make verify` passes cleanly (Ruff, Mypy strict mode, Pytest offline suite).
-- **Validation Script:** `python3 .agents/skills/maintaining-agent-docs/scripts/validate.py . --strict` reports 0 errors and 0 warnings.
-- **GitHub Issues:** Active at [https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues).
