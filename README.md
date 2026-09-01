@@ -3,6 +3,12 @@
 > A compact, evidence-first Python repository demonstrating real application-level use of the **Claude Agent SDK** through stateless queries, interactive sessions, custom tools/MCP, async control flow, and a typed FastAPI boundary.
 
 [![CI](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/python-3.11+-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![SDK](https://img.shields.io/badge/claude--agent--sdk-0.2.134-blueviolet.svg)](https://pypi.org/project/claude-agent-sdk/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.116+-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Mypy](https://img.shields.io/badge/mypy-strict-blue.svg)](https://mypy-lang.org/)
+[![Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Why this repo exists
 
@@ -163,6 +169,8 @@ Credential-free gates:
 ```bash
 make verify
 ```
+
+See [AGENTS.md](AGENTS.md) for canonical agent instructions, quality gates, and project conventions.
 
 Equivalent commands:
 
