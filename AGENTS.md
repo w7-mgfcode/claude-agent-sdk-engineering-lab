@@ -47,6 +47,21 @@ Equivalent sub-commands:
 - Do not silently accept unsupported OpenAI fields or swallow SDK errors.
 - Do not add vector databases or RAG just to make the repo larger.
 
+## Branch Naming & LLM Agent Workflow Conventions
+
+- Maintainer & Author: Gabor Szabo <gabor@stp72.com>
+- Branch naming patterns:
+  - `agent/<agent-id>/<task-slug>` — Autonomous agent working sessions (e.g., `agent/antigravity/sse-streaming`)
+  - `feat/<issue-id>-<slug>` — Feature branches linked to GitHub issues (e.g., `feat/2-sse-streaming`)
+  - `fix/<issue-id>-<slug>` — Defect fixes and edge-case patches (e.g., `fix/3-timeout-handling`)
+  - `docs/<slug>` — Documentation updates, evidence recordings, and roadmap adjustments
+  - `chore/<slug>` — Tooling, dependencies, and CI workflows
+- PR & Merge Governance:
+  - All feature/agent branches must branch from the latest `main`.
+  - Quality gate `make verify` must pass cleanly before opening or updating a PR.
+  - GitHub branch protection enforces required `verify` CI status check and linear history on `main`.
+  - Direct force-pushes and branch deletions on `main` are prohibited.
+
 ## Project Structure
 
 - `src/claude_agent_lab/` — core package (API router, SDK adapter, config, error mappings, tools, session store)
