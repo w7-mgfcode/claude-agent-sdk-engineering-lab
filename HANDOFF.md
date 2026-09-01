@@ -1,87 +1,87 @@
-# Session Handoff
+# Session Handoff & Roadmap Status
 
 > **Date:** 2026-09-01  
-> **Repository:** `claude-agent-sdk-engineering-lab`  
 > **Maintainer:** Gabor Szabo `<gabor@stp72.com>`  
-> **Status:** Ready for Movement 02 (`feat/2-sse-streaming`)  
-> **CI / Quality Gate:** 100% Green (`make verify` passes Ruff, Mypy Strict, Pytest)
+> **Current Milestone:** **Movement 6 Complete & Pushed** (`006-parallel-publish-merge-sync` commit `1414f3e`)  
+> **Quality Gate:** 100% Green (51/51 test suites, 122/122 tests passing, 0 lint errors)
 
 ---
 
-## 1. Executive Summary
+## 1. Executive Summary & Status
 
-This repository is fully configured, audited, and published on GitHub as an evidence-first benchmark for production-grade **Claude Agent SDK (Python)** architectures.
+We just completed and pushed **Movement 6: Parallel Publish & Multi-Branch Merge-Sync** (`006-parallel-publish-merge-sync`). 
 
-- **Remote URL:** [https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab)
-- **Branch Protection:** Active on `main` requiring linear history, strict `verify` CI status check passing, and blocking force pushes/deletions.
-- **Maintainer Identity:** Unified across git config, commit history, [pyproject.toml](pyproject.toml), and [AGENTS.md](AGENTS.md).
-- **Issue Tracking:** 5 strategic Continuous Development Movements published as GitHub Issues ([#1](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues/1) through [#5](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues/5)).
+All core foundation and advanced multi-worktree orchestration capabilities (Movements 1 through 6) are 100% implemented, tested, and verified against strict quality gates and anti-regression protocols.
 
 ---
 
-## 2. What Was Accomplished
+## 2. Complete Movement Lifecycle Map
 
-### Canonical Agent Documentation & Tool Alignment
-- Audited and updated canonical [AGENTS.md](AGENTS.md) with complete repo-verified setup, build, test, and verification commands, code conventions, architecture notes, and safety boundaries within managed region markers (`<!-- BEGIN maintaining-agent-docs (generated) -->`).
-- Converted [CLAUDE.md](CLAUDE.md) and [GEMINI.md](GEMINI.md) into thin `@AGENTS.md` shims to eliminate policy drift across diverse AI developer tooling.
-- Enhanced [README.md](README.md) with Shields.io status badges (CI, Python 3.11+, Claude Agent SDK 0.2.134, FastAPI, Mypy Strict, Ruff, MIT License) and linked `AGENTS.md`.
+```mermaid
+flowchart TD
+    M1["Movement 1: Core Safety & Lifecycle"] --> M2["Movement 2: Agent Runner"]
+    M2 --> M3["Movement 3: Benchmark Eval Matrix"]
+    M3 --> M4["Movement 4: Fleet Sync & Conflict Matrix"]
+    M4 --> M5["Movement 5: Fleet Tiering & Auto-Archive"]
+    M5 --> M6["Movement 6: Parallel Publish & Merge-Sync (COMPLETED)"]
+    
+    M6 -.-> F1["Movement 7: Multi-Host Adapters (GitLab, Gitea, Bitbucket)"]
+    M6 -.-> F2["Movement 8: Sandboxed Container Execution (Docker / MicroVMs)"]
+    M6 -.-> F3["Movement 9: Cross-Repository Poly-Worktree Orchestration"]
+    M6 -.-> F4["Movement 10: Issue Tracker Bi-directional Sync (Jira / Linear)"]
 
-### Strategic Roadmap & Issue Publishing
-- Authored the **5 Continuous Development Movements** in [docs/.next-move/](docs/.next-move/) ([README.md](docs/.next-move/README.md), `01_live_sdk_calibration.md` through `05_continuous_quality_drift.md`).
-- Added standardized GitHub issue templates in [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/) (`movement.md`, `bug_report.md`, `feature_request.md`).
-- Configured custom GitHub labels (`movement`, `evidence`, `async-architecture`, `resilience`, `observability`, `automation`) and published all 5 Movement Issues.
-
-### Ecosystem & Branch Strategy
-- Established strict branch naming conventions (`feat/<issue-id>-<slug>` and `agent/<agent-id>/<task-slug>`).
-- Cross-compatible with `Mannostree` parallel development CLI for isolated worktree workflows.
-
----
-
-## 3. Movement Matrix & Status
-
-| # | Movement | Focus Area | Issue | Status | Target Deliverables |
-| :-: | :--- | :--- | :-: | :-: | :--- |
-| **01** | [**Live SDK Calibration**](docs/.next-move/01_live_sdk_calibration.md) | Grounded Proof | [#1](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues/1) | **Spec Ready** (Pending live API key run) | `docs/EVIDENCE.md`<br>`docs/DEMO_SCRIPT.md`<br>`docs/TROUBLESHOOTING.md` |
-| **02** | [**SSE Streaming & Cancellation**](docs/.next-move/02_sse_streaming_cancellation.md) | Async Architecture | [#2](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues/2) | **Next Active** | `src/claude_agent_lab/api.py`<br>`src/claude_agent_lab/sdk_adapter.py`<br>`tests/integration/test_api_fake_sdk.py` |
-| **03** | [**Resilience & Fault-Injection**](docs/.next-move/03_resilience_fault_injection.md) | Edge-Case Robustness | [#3](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues/3) | **Planned** | `tests/unit/test_resilience.py`<br>`src/claude_agent_lab/errors.py` |
-| **04** | [**Telemetry & Cost Accounting**](docs/.next-move/04_telemetry_cost_ledger.md) | Observability | [#4](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues/4) | **Planned** | `src/claude_agent_lab/logging_utils.py`<br>`src/claude_agent_lab/config.py` |
-| **05** | [**Quality & Drift Defense**](docs/.next-move/05_continuous_quality_drift.md) | Automation | [#5](https://github.com/w7-mgfcode/claude-agent-sdk-engineering-lab/issues/5) | **Planned** | `.pre-commit-config.yaml`<br>`.github/workflows/sdk-drift.yml` |
+    classDef done fill:#d4edda,stroke:#28a745,color:#155724;
+    classDef next fill:#fff3cd,stroke:#ffc107,color:#856404;
+    class M1,M2,M3,M4,M5,M6 done;
+    class F1,F2,F3,F4 next;
+```
 
 ---
 
-## 4. Key Architectural Decisions
+## 3. Completed Movements (100% Done & Pushed)
 
-1. **Canonical Single Source of Truth in AGENTS.md**: Eliminates duplication and conflicting instructions across multi-agent environments.
-2. **Author Identity Alignment (`Gabor Szabo <gabor@stp72.com>`)**: Clean commit attribution matching public GitHub maintainer profile.
-3. **Linear History & Protected `main`**: Ensures reproducible, bisectable git history and enforces passing green CI gates before any merge.
-4. **Mocked/Offline Test Harness as Primary Gate**: Guarantees fast, deterministic CI execution without requiring external API token dependencies or incurring API costs during PR validation.
-
----
-
-## 5. Immediate Next Steps (Movement 02 Kickoff)
-
-1. **Create Feature Branch**:
-   ```bash
-   git checkout -b feat/2-sse-streaming
-   ```
-2. **Data Models (`src/claude_agent_lab/api_models.py`)**:
-   - Add `ChatCompletionChunk` model supporting OpenAI-compatible SSE chunk envelopes (`data: {"choices": [{"delta": {"content": "..."}}]}`).
-3. **Async Streaming Generator (`src/claude_agent_lab/sdk_adapter.py`)**:
-   - Implement `stream_complete(req: ChatCompletionRequest) -> AsyncGenerator[str, None]` yielding partial token events and handling `asyncio.CancelledError`.
-4. **FastAPI Endpoint Update (`src/claude_agent_lab/api.py`)**:
-   - Update `/v1/chat/completions` to return `StreamingResponse(..., media_type="text/event-stream")` when `stream=True`.
-5. **Testing & Validation**:
-   - Add streaming chunk validation and client disconnect cancellation tests in `tests/integration/test_api_fake_sdk.py`.
-   - Run quality gate: `make verify`.
+| Movement | Branch & Commit | Core Deliverables | Verification Status |
+| :--- | :--- | :--- | :--- |
+| **Movement 1: Core Safety & Worktree Lifecycle** | `001-safety-lifecycle-recovery` | Explicit base resolution, isolated workspace lifecycle (`spawn`, `drop`, `list`, `info`, `status`, `sync`), setup & env profiles, `doctor`, transactional journal rollback, and workspace `archive`/`restore`. | ✅ **PASS** |
+| **Movement 2: Agent Contract Runner** | `002-agent-contract-runner` | Autonomous worker agent orchestration (`agent dispatch`, `agent status`, `agent verify`, `agent cancel`), `.task/task-contract.md` parsing, quality gates, and fulfillment verification. | ✅ **PASS** |
+| **Movement 3: Benchmark Matrix Evaluation** | `003-benchmark-matrix-eval` | Automated multi-variant benchmark harness (`parallel eval`), probe matrices, baseline delta sampling, and Weighted Sum Model (WSM) composite scoring. | ✅ **PASS** |
+| **Movement 4: Fleet Sync & Conflict Matrix** | `004-fleet-sync-conflict-matrix` | Fleet-wide synchronization (`fleet sync`), in-memory 3-way merge simulation, and pairwise $N \times N$ cross-worktree collision matrix (`fleet conflict-matrix`). | ✅ **PASS** |
+| **Movement 5: Fleet Tiering & Auto-Archive** | `005-fleet-tier-auto-archive` | Concurrency leases (`fleet lease`), lifecycle tiers (`hot`/`warm`/`cold`/`pinned`), automated retention auto-archival (`fleet auto-archive`), and capacity status dashboard (`fleet status`). | ✅ **PASS** |
+| **Movement 6: Parallel Publish & Merge-Sync** | `006-parallel-publish-merge-sync`<br>(`1414f3e`) | Single-command parallel winner PR publishing with embedded benchmark matrix (`parallel publish`), multi-branch release assembly (`fleet merge-sync`), release manifests, and fleet batch publishing (`fleet publish`). | ✅ **PASS** |
 
 ---
 
-## 6. Verification Commands
+## 4. Remaining Planned Movements (Next Roadmap Steps)
+
+The following 4 advanced movements are queued for the next iterations:
+
+### 🚀 Movement 7: Multi-Host Adapters (GitLab, Gitea, Bitbucket)
+- **Goal:** Extend beyond GitHub CLI (`gh`) to provide native API and CLI publishing adapters for GitLab Merge Requests, Gitea Pull Requests, and Bitbucket Cloud/Server.
+- **Key Modules:** `src/adapters/gitlab.ts`, `src/adapters/gitea.ts`, `src/adapters/bitbucket.ts`, host auto-detection, and token credential resolution.
+
+### 🛡️ Movement 8: Sandboxed Container Execution (Docker / MicroVMs)
+- **Goal:** Isolate autonomous agent execution and benchmark probe evaluation in lightweight containerized environments (Docker / Firecracker MicroVMs) to prevent uncontrolled filesystem access or side-effects.
+- **Key Modules:** `src/runtime/docker.ts`, `src/runtime/sandbox.ts`, resource constraints (CPU/RAM limits), and bind-mount worktree security.
+
+### 🌐 Movement 9: Cross-Repository Poly-Worktree Orchestration
+- **Goal:** Orchestrate synchronized, parallel worktrees across multiple repositories (poly-repo / microservices) with coordinated base-branch resolution and atomic cross-repo commits.
+- **Key Modules:** `.mannostree.fleet.yml`, `src/poly/orchestrator.ts`, cross-repo dependency DAG resolution, and multi-repo merge-sync.
+
+### 📊 Movement 10: Issue Tracker Bi-Directional Sync (Jira / Linear)
+- **Goal:** Full bi-directional status synchronization with external issue trackers (Jira, Linear, GitHub Projects), automatically updating issue states as worktrees progress through lifecycle states (`WORKTREE_READY` $\to$ `IMPLEMENTED` $\to$ `PR_OPEN`).
+- **Key Modules:** `src/integrations/jira.ts`, `src/integrations/linear.ts`, webhook listeners, and acceptance criteria auto-population.
+
+---
+
+## 5. Verification Commands
 
 ```bash
-# Verify entire quality suite (Ruff, Mypy Strict, Pytest)
-make verify
+# Full test suite (51 files, 122 tests)
+npm test
 
-# Verify agent docs compliance
-python3 .agents/skills/maintaining-agent-docs/scripts/validate.py . --strict
+# Strict TypeScript typechecking and linting
+npm run lint
+
+# Check git status
+git status
 ```
